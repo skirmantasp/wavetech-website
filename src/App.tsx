@@ -7,6 +7,7 @@ import ProductsSection from './components/ProductsSection';
 import EnterpriseProofSection from './components/EnterpriseProofSection';
 import FutureInfrastructureLayer from './components/FutureInfrastructureLayer';
 import Footer from './components/Footer';
+import ChatBot from './components/ChatBot';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         <FutureInfrastructureLayer />
       </main>
       <Footer />
+      <ChatBot />
     </>
   );
 }

@@ -7,7 +7,9 @@ RUN npm run build
 
 FROM node:20-alpine
 WORKDIR /app
-RUN npm install -g serve
 COPY --from=build /app/dist ./dist
+COPY --from=build /app/server.js ./server.js
+COPY --from=build /app/package.json ./package.json
+RUN npm install express openai
 EXPOSE 3000
-CMD ["serve", "dist", "-s", "-l", "3000"]
+CMD ["node", "server.js"]
