@@ -66,7 +66,7 @@ export default function HeroSection() {
             </p>
 
             <div style={{ display: 'flex', gap: '1.5rem' }}>
-              <button className="btn-primary">
+              <button className="btn-primary" onClick={() => document.getElementById('deployment')?.scrollIntoView({ behavior: 'smooth' })}>
                 Explore The Network
               </button>
             </div>

@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer style={{ background: 'var(--color-wt-black)' }}>
+    <footer id="footer" style={{ background: 'var(--color-wt-black)' }}>
       {/* Massive CTA Block */}
       <div style={{ padding: '8rem 4rem', borderBottom: '1px solid var(--color-wt-border)', textAlign: 'center', background: 'var(--color-wt-deep)', position: 'relative', overflow: 'hidden' }}>
         <div className="bg-grid" style={{ position: 'absolute', inset: 0, opacity: 0.2 }} />
