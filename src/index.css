@@ -1,0 +1,242 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-wt-black: #060606;
+  --color-wt-deep: #0a0a0a;
+  --color-wt-graphite: #121212;
+  --color-wt-surface: #1a1a1a;
+  --color-wt-border: rgba(255, 255, 255, 0.1);
+  --color-wt-border-light: rgba(255, 255, 255, 0.15);
+  --color-wt-border-strong: rgba(255, 255, 255, 0.25);
+  
+  --color-wt-cyan: #00e5ff;
+  --color-wt-cyan-dim: rgba(0, 229, 255, 0.15);
+  --color-wt-green: #00ffaa;
+  --color-wt-amber: #ffb700;
+  --color-wt-red: #ff3333;
+  
+  --color-wt-text: #f0f0f0;
+  --color-wt-muted: #a0a0a0;
+  --color-wt-subtle: #666666;
+  
+  --font-sans: "Geist", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-wt-black);
+  color: var(--color-wt-text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: var(--color-wt-green);
+  color: #000;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-wt-black);
+  border-left: 1px solid var(--color-wt-border);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-wt-subtle);
+}
+
+/* ── Typography Scale ──────────────────────────────── */
+.display-xl {
+  font-size: clamp(3rem, 6vw, 5rem); /* Reduced from 6.5rem */
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+.display-lg {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+.display-md {
+  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+.heading-lg {
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+}
+
+.label-mono {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.text-body {
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--color-wt-muted);
+  font-weight: 400;
+}
+
+/* ── Grid Framework (The Blueprint Style) ─────────── */
+.blueprint-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 0;
+  border-left: 1px solid var(--color-wt-border);
+  border-top: 1px solid var(--color-wt-border);
+}
+
+.blueprint-cell {
+  border-right: 1px solid var(--color-wt-border);
+  border-bottom: 1px solid var(--color-wt-border);
+  padding: 2rem;
+  position: relative;
+}
+
+/* Crosshairs at cell corners for extreme technical feel */
+.blueprint-cell::after {
+  content: '+';
+  position: absolute;
+  bottom: -6px;
+  right: -4px;
+  color: var(--color-wt-subtle);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  line-height: 1;
+  z-index: 10;
+}
+
+/* ── UI Elements ───────────────────────────────────── */
+.surface {
+  background: var(--color-wt-surface);
+  border: 1px solid var(--color-wt-border);
+}
+
+.gradient-text-white {
+  background: linear-gradient(180deg, #ffffff 0%, #888888 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-cyan {
+  background: linear-gradient(180deg, #00e5ff 0%, #008899 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1rem 2rem;
+  background: var(--color-wt-text);
+  color: var(--color-wt-black);
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 0.8125rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border: 1px solid var(--color-wt-text);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.btn-primary:hover {
+  background: transparent;
+  color: var(--color-wt-text);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1rem 2rem;
+  background: transparent;
+  color: var(--color-wt-text);
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 0.8125rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border: 1px solid var(--color-wt-border);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.btn-outline:hover {
+  border-color: var(--color-wt-text);
+  background: rgba(255,255,255,0.03);
+}
+
+.nav-link {
+  color: var(--color-wt-muted);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.nav-link:hover {
+  color: var(--color-wt-text);
+}
+
+/* ── Specific Visuals ──────────────────────────────── */
+.cinematic-shadow {
+  box-shadow: inset 0 0 100px rgba(0,0,0,0.8);
+}
+.cinematic-glow {
+  box-shadow: 0 0 80px rgba(0,229,255,0.1);
+}
+
+.animate-blink {
+  animation: blink 2s infinite ease-in-out;
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* Metric Callouts */
+.metric-value {
+  font-family: var(--font-mono);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 300;
+  color: var(--color-wt-text);
+  line-height: 1;
+  letter-spacing: -0.05em;
+}
+
+/* Subtle background grid */
+.bg-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+}
