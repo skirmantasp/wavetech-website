@@ -12,10 +12,7 @@ app.use(express.json());
 // Serve static files from the Vite build
 app.use(express.static(path.join(__dirname, 'dist')));
 
-// OpenAI client
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+// OpenAI is initialized lazily inside the /api/chat handler
 
 const SYSTEM_PROMPT = `You are the WaveTech AI Assistant — a knowledgeable, professional, and concise representative of WaveTech, a deep-tech infrastructure company specializing in battery intelligence.
 
@@ -52,6 +49,12 @@ BEHAVIOR RULES:
 // Chat API endpoint
 app.post('/api/chat', async (req, res) => {
   try {
+    if (!process.env.OPENAI_API_KEY) {
+      return res.status(500).json({ error: 'OpenAI API key is not configured.' });
+    }
+
+    const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+
     const { messages } = req.body;
 
     if (!messages || !Array.isArray(messages)) {
