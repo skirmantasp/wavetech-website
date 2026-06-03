@@ -56,8 +56,9 @@ export default function HeroSection() {
             </div>
 
             <h1 className="display-xl" style={{ marginBottom: '2rem' }}>
-              <span className="gradient-text-white">The nervous system of</span><br/>
-              <span className="gradient-text-white">global infrastructure.</span>
+              <span className="gradient-text-white">Every battery.</span><br/>
+              <span className="gradient-text-white">Connected. Optimized.</span><br/>
+              <span style={{ color: 'var(--color-wt-green)' }}>Extended.</span>
             </h1>
 
             <p className="text-body" style={{ maxWidth: '600px', marginBottom: '3.5rem', fontSize: '1.125rem' }}>
