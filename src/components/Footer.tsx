@@ -13,12 +13,12 @@ export default function Footer() {
             Deploy the intelligence layer that extends battery life, eliminates downtime, and transforms capital efficiency at a global scale.
           </p>
           <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center' }}>
-            <button className="btn-primary">
+            <a href="mailto:info@wavetech.com?subject=Deployment%20Request&body=Hello%20WaveTech%20team%2C%0A%0AWe%20are%20interested%20in%20deploying%20WaveTech%20intelligence%20at%20our%20infrastructure.%0A%0ACompany%3A%20%0AIndustry%3A%20%0AFleet%20Size%3A%20%0A%0APlease%20contact%20us%20to%20discuss%20next%20steps.%0A%0ABest%20regards" className="btn-primary" style={{ textDecoration: 'none' }}>
               Initialize Deployment
-            </button>
-            <button className="btn-outline">
+            </a>
+            <a href="mailto:info@wavetech.com?subject=Validation%20Data%20Request&body=Hello%20WaveTech%20team%2C%0A%0AI%20would%20like%20to%20request%20technical%20validation%20data%20and%20independent%20test%20results.%0A%0ACompany%3A%20%0ARole%3A%20%0A%0AThank%20you" className="btn-outline" style={{ textDecoration: 'none' }}>
               Request Validation Data
-            </button>
+            </a>
           </div>
         </div>
       </div>
@@ -50,7 +50,7 @@ export default function Footer() {
         <div style={{ padding: '4rem', borderRight: '1px solid var(--color-wt-border)' }}>
           <div className="label-mono" style={{ color: 'var(--color-wt-subtle)', marginBottom: '2rem' }}>ENTERPRISE</div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-            <a href="#" className="nav-link">Executive Briefing</a>
+            <a href="mailto:info@wavetech.com?subject=Executive%20Briefing%20Request" className="nav-link">Executive Briefing</a>
             <a href="#" className="nav-link">Technical Reports</a>
             <a href="#" className="nav-link">Case Studies</a>
             <a href="#" className="nav-link">Partner Program</a>
