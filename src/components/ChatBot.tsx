@@ -8,12 +8,20 @@ interface Message {
 
 export default function ChatBot() {
   const [isOpen, setIsOpen] = useState(false);
+  const [showTooltip, setShowTooltip] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     { role: 'assistant', content: 'Welcome to WaveTech. How can I help you with battery infrastructure intelligence today?' }
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  // Show tooltip after 3s, hide after 8s
+  useEffect(() => {
+    const showTimer = setTimeout(() => setShowTooltip(true), 3000);
+    const hideTimer = setTimeout(() => setShowTooltip(false), 11000);
+    return () => { clearTimeout(showTimer); clearTimeout(hideTimer); };
+  }, []);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -46,9 +54,40 @@ export default function ChatBot() {
 
   return (
     <>
+      {/* Tooltip Bubble */}
+      <AnimatePresence>
+        {showTooltip && !isOpen && (
+          <motion.div
+            initial={{ opacity: 0, x: 10 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 10 }}
+            transition={{ duration: 0.3 }}
+            onClick={() => { setIsOpen(true); setShowTooltip(false); }}
+            style={{
+              position: 'fixed',
+              bottom: '2.6rem',
+              right: '5.5rem',
+              zIndex: 9999,
+              padding: '0.65rem 1.25rem',
+              background: 'var(--color-wt-cyan)',
+              color: '#0a0a0a',
+              fontFamily: 'var(--font-mono)',
+              fontSize: '0.75rem',
+              fontWeight: 600,
+              letterSpacing: '0.05em',
+              cursor: 'pointer',
+              whiteSpace: 'nowrap',
+              boxShadow: '0 4px 20px rgba(0, 194, 255, 0.25)',
+            }}
+          >
+            ASK WAVETECH AI
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Floating Button */}
       <motion.button
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={() => { setIsOpen(!isOpen); setShowTooltip(false); }}
         style={{
           position: 'fixed',
           bottom: '2rem',
