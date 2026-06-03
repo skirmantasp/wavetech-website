@@ -80,6 +80,34 @@ app.post('/api/chat', async (req, res) => {
   }
 });
 
+// Contact form endpoint
+app.post('/api/contact', async (req, res) => {
+  try {
+    const { name, email, company, message, subject } = req.body;
+
+    if (!name || !email) {
+      return res.status(400).json({ error: 'Name and email are required.' });
+    }
+
+    // Log to Railway Deploy Logs (visible in Railway dashboard)
+    console.log('═══════════════════════════════════════');
+    console.log('📩 NEW CONTACT FORM SUBMISSION');
+    console.log('═══════════════════════════════════════');
+    console.log(`Subject:  ${subject || 'General Inquiry'}`);
+    console.log(`Name:     ${name}`);
+    console.log(`Email:    ${email}`);
+    console.log(`Company:  ${company || 'N/A'}`);
+    console.log(`Message:  ${message || 'N/A'}`);
+    console.log(`Time:     ${new Date().toISOString()}`);
+    console.log('═══════════════════════════════════════');
+
+    res.json({ success: true });
+  } catch (error) {
+    console.error('Contact form error:', error);
+    res.status(500).json({ error: 'Failed to process submission.' });
+  }
+});
+
 // SPA fallback — serve index.html for all non-API routes
 app.use((req, res) => {
   res.sendFile(path.join(__dirname, 'dist', 'index.html'));

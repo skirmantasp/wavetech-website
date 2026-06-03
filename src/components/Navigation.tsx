@@ -7,7 +7,7 @@ const NAV_LINKS = [
   { label: 'Infrastructure Impact', href: '#proof' },
 ];
 
-export default function Navigation() {
+export default function Navigation({ onRequestBriefing }: { onRequestBriefing: () => void }) {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -73,7 +73,7 @@ export default function Navigation() {
             <span className="label-mono" style={{ color: 'var(--color-wt-muted)' }}>INTELLIGENCE NETWORK ONLINE</span>
           </div>
           <button
-            onClick={(e) => scrollTo(e as unknown as React.MouseEvent<HTMLButtonElement>, 'footer')}
+            onClick={onRequestBriefing}
             style={{ 
               height: '100%', 
               padding: '0 2.5rem', 

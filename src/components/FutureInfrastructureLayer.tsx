@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 
-export default function FutureInfrastructureLayer() {
+export default function FutureInfrastructureLayer({ onRequestBriefing }: { onRequestBriefing: () => void }) {
   return (
     <section style={{ position: 'relative', background: 'var(--color-wt-black)' }}>
       {/* Cinematic Visionary Background */}
@@ -43,9 +43,9 @@ export default function FutureInfrastructureLayer() {
             </p>
 
             <div style={{ display: 'flex', gap: '1.5rem' }}>
-              <a href="mailto:info@wavetech.com?subject=Executive%20Briefing%20Request&body=Hello%20WaveTech%20team%2C%0A%0AI%20am%20interested%20in%20scheduling%20an%20Executive%20Briefing.%0A%0ACompany%3A%20%0ARole%3A%20%0APhone%3A%20%0A%0APlease%20contact%20me%20to%20arrange%20a%20meeting.%0A%0ABest%20regards" className="btn-primary" style={{ textDecoration: 'none' }}>
+              <button className="btn-primary" onClick={onRequestBriefing}>
                 Request Executive Briefing
-              </a>
+              </button>
             </div>
           </motion.div>
         </div>
